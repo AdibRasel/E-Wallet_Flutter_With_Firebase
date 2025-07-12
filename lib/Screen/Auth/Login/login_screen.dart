@@ -2,6 +2,7 @@ import 'package:e_wallet/Global_Widgets/custom_app_bar.dart';
 import 'package:e_wallet/Global_Widgets/custom_button.dart';
 import 'package:e_wallet/Global_Widgets/custom_field.dart';
 import 'package:e_wallet/Screen/Auth/Register/register_screen.dart';
+import 'package:e_wallet/Screen/Home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 20,),
 
                   CustomButton(title:"Log In", onTap: () => {
-                    // Get.to(() => const RegisterScreen())
+                    Get.to(() => const HomeScreen())
                   },),
                 ],
               ),

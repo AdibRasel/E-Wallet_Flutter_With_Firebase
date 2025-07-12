@@ -51,7 +51,55 @@ class ProfileSetupScree extends StatelessWidget {
                         )
                         ,
                         InkWell(
-                          onTap: () => controller.imagePicker(),
+
+                          // onTap: () => controller.imagePicker(),
+
+                          onTap: (){
+                            Get.bottomSheet(
+                              SizedBox(
+                                height: 200,
+                                width: MediaQuery.of(context).size.width,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(25.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                  
+                                      InkWell(
+                                        onTap: () => {
+                                          controller.imagePicker(false) // camera
+                                        },
+                                        child: Column(
+                                          children: [
+                                          Icon(Icons.camera_alt_outlined, size: 100, color: Colors.blue,),
+                                          Text("Camera"),
+                                          ],
+                                        ),
+                                      ),
+                                      
+                                  
+                                      InkWell(
+                                        onTap: () => {
+                                          controller.imagePicker(true) // gallery
+                                        },
+                                        child: Column(
+                                          children: [
+                                             Icon(Icons.photo, size: 100, color: Colors.blue,),
+                                              Text("Gallery"),
+                                          ],
+                                        ),
+                                      ),
+                                     
+                                  
+                                  
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              enableDrag: false,
+                              backgroundColor: Colors.white
+                            );
+                          },
 
 
                           child: Container(

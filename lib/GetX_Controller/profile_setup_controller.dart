@@ -9,18 +9,44 @@ class ProfileSetupController extends GetxController{
 
   File? pickedImage;
 
-  Future imagePicker () async{
+  Future imagePicker (isGallery) async{
+
+    // Future <bool> isGallery = true;
+
     try{
-      final image = await ImagePicker().pickImage(source: ImageSource.camera);
-      if(image == null) return;
+      if(isGallery == true){
 
-      final tempImage = File(image.path); // XFile theke file type convert
-      pickedImage = tempImage;
 
-      update();
-      print("Image Path: ${pickedImage.toString()}");
+        final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+        if(image == null) return;
+
+        final tempImage = File(image.path); // XFile theke file type convert
+        pickedImage = tempImage;
+        Get.back();
+
+        update();
+        // print("Image Path: ${pickedImage.toString()}");
+
+
+      }else if(isGallery == false){
+
+
+        final image = await ImagePicker().pickImage(source: ImageSource.camera);
+        if(image == null) return;
+
+        final tempImage = File(image.path); // XFile theke file type convert
+        pickedImage = tempImage;
+        Get.back();
+
+        update();
+        // print("Image Path: ${pickedImage.toString()}");
+
+
+      }
+
 
     }catch (error){
+      // ignore: avoid_print
       print("Error is ${error.toString()}");
     }
   }
