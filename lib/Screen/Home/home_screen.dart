@@ -1,7 +1,10 @@
-import 'package:e_wallet/Global_Widgets/custom_app_bar.dart';
 import 'package:e_wallet/Global_Widgets/custom_home_item.dart';
+import 'package:e_wallet/Global_Widgets/custom_list_tile.dart';
+import 'package:e_wallet/Screen/Activity/activity_screen.dart';
+import 'package:e_wallet/Screen/Send_Money/receiver_screen.dart';
 import 'package:e_wallet/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -70,6 +73,7 @@ class HomeScreen extends StatelessWidget {
 
                 // Ballance
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                      Text(
                       "\$54,690.00",
@@ -95,56 +99,81 @@ class HomeScreen extends StatelessWidget {
         ),
 
         // Main Section
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
 
-
-              // Home Item Button
-              Row(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                
-
-                  CustomHomeItem(
-                    onTap: (){
-
-                    },
-                    icon: Icons.send, 
-                    title: "Send\nMoney",
+                        
+                        
+                  // Home Item Button
+                  Row(
+                    children: [
+                        
+                    
+                        
+                      CustomHomeItem(
+                        onTap: (){
+                          Get.to( () => ReceiverScreen());
+                        },
+                        icon: Icons.send, 
+                        title: "Send\nMoney",
+                      ),
+                      SizedBox(width: 20,),
+                      CustomHomeItem(
+                        onTap: (){
+                        
+                        },
+                        icon: Icons.send_and_archive, 
+                        title: "Add\nMoney",
+                        backgroundColor: Colors.white,
+                        itemColors: AppColors.primary,
+                      ),
+                    
+                    
+                    ],
+                 ),
+                        
+                        
+                  // Activities
+                  SizedBox(height: 25,),
+                        
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Activity"),
+                      InkWell(
+                        onTap: (){
+                          Get.to(() => ActivityScreen());
+                        },
+                        child: Text("See All")
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 20,),
-                  CustomHomeItem(
-                    onTap: (){
 
+                  SizedBox(height: 10,),
+                  
+                        
+                  ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    primary: false,
+                    itemCount: 10,
+                    itemBuilder: (context, index){
+                      return CustomListTile(
+                        title: "Md Rasal Hossain", 
+                        subtitle: "2 Days Ago",
+                        trailing: "+600",
+                      );
                     },
-                    icon: Icons.send_and_archive, 
-                    title: "Add\nMoney",
-                    backgroundColor: Colors.white,
-                    itemColors: AppColors.primary,
-                  ),
-                
-                
-                ],
-             ),
-
-
-              // Activities
-              SizedBox(height: 25,),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Activity"),
-                  Text("See All"),
+                  )
+                  
                 ],
               ),
-
-
-              
-            ],
+            ),
           ),
         ),
 
