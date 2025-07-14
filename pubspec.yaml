@@ -34,9 +34,33 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+
+  # State Management 
   get: ^4.7.2
+
+  # Mobile local storage 
   get_storage: ^2.1.1
+
+  # Image Picker 
   image_picker: ^1.1.2
+
+  # fire base setup lin
+  # https://medium.com/@samra.sajjad0001/a-complete-guide-to-integrating-firebase-in-flutter-step-by-step-34d49af9cff0
+
+  # Core 
+  firebase_core: ^3.15.1
+
+  # Auth Login with- facebook, google, github, etc
+  firebase_auth: ^5.6.2
+
+  # Storage 
+  firebase_storage: ^12.4.9
+
+  # Database 
+  cloud_firestore: ^5.6.11
+
+  # Push Notification 
+  firebase_messaging: ^15.2.9
 
 dev_dependencies:
   flutter_test:

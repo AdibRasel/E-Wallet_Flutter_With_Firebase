@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "331315579834",
+    "project_id": "e-wallet-7d147",
+    "storage_bucket": "e-wallet-7d147.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331315579834:android:fae812119f0518b9b66b83",
+        "android_client_info": {
+          "package_name": "com.example.e_wallet_rasel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqtCGT6KWvLOBWg8iBVfIegbH-lDsz5mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,13 +7,14 @@ class CustomField extends StatelessWidget {
   final bool? secured;
   final IconData? preffixIcon;
   final TextInputType? keyboardType;
-  // final TextEditingController controller;
-  const CustomField({super.key, required this.title, this.secured, this.preffixIcon, this.keyboardType}); // argument akare data nite hole ekhane this.title dite hobe. 
+  final TextEditingController? controller;
+  const CustomField({super.key, required this.title, this.secured, this.preffixIcon, this.keyboardType, this.controller}); // argument akare data nite hole ekhane this.title dite hobe. 
 
   @override
   Widget build(BuildContext context) {
     return 
     TextFormField(
+      controller: controller,
       keyboardType: keyboardType,
       obscureText: secured ?? false,
       // controller: controller,
