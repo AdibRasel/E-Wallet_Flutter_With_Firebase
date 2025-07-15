@@ -58,6 +58,38 @@ class RegisterScreen extends StatelessWidget {
 
                   CustomButton(title:"Sign Up", 
                     onTap: () async   {
+                      
+                      // var acs = ActionCodeSettings(
+                      //   // URl you want to redirect back to the link.
+                      //   // url: "https://e-wallet-7d147.firebaseapp.com",
+                      //   url: "https://e-wallet-7d147.firebaseapp.com/completeSignIn",
+                      //   // url: "localhost",
+
+
+                      //   // This must be true
+                      //   handleCodeInApp: true,
+                      //   androidPackageName: "com.example.e_wallet_rasel",
+
+                      //   androidInstallApp: true,
+
+                      //   androidMinimumVersion: "12"
+
+                      // );
+
+
+                      // try{
+                      //   await FirebaseAuth.instance.sendSignInLinkToEmail(
+                      //     email: emailController.text, 
+                      //     actionCodeSettings: acs
+                      //   ).then((value){
+                      //     print("Success");
+                      //   });
+                      // }catch(error){
+                      //   Get.snackbar("error: ", error.toString());
+                      //   print("error: " + error.toString());
+                      // }
+
+
 
                       try{
                         await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -66,8 +98,8 @@ class RegisterScreen extends StatelessWidget {
                         );
 
 
-                      // successfully registred thed route next 
-                      Get.to(() => ProfileSetupScree());
+                      // successfully registred then route next 
+                      Get.to(() => ProfileSetupScree(), arguments: emailController.text);
 
 
                       } on FirebaseAuthException catch(error){
@@ -75,10 +107,6 @@ class RegisterScreen extends StatelessWidget {
                         print(error);
                       }
 
-                      // print(emailController.text),
-                      // print(passwordController.text)
-
-                      // Get.to(() => ProfileSetupScree())
                     },),
                 ],
               ),
