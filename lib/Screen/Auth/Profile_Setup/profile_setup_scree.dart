@@ -4,8 +4,8 @@ import 'package:e_wallet/Global_Widgets/custom_app_bar.dart';
 import 'package:e_wallet/Global_Widgets/custom_button.dart';
 import 'package:e_wallet/Global_Widgets/custom_field.dart';
 import 'package:e_wallet/Screen/Auth/Bottom_Nav/bottom_nav.dart';
-import 'package:e_wallet/Screen/Home/home_screen.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:e_wallet/Screen/Home/home_screen.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -158,7 +158,7 @@ class ProfileSetupScree extends StatelessWidget {
                 title: "Complete Setup", 
                 onTap: () async {
                
-                  final token = await FirebaseMessaging.instance.getToken();
+                  // final token = await FirebaseMessaging.instance.getToken();
 
                   // Firestore ডাটাবেজের instance থেকে "users" নামের collection ধরছি
                   await FirebaseFirestore.instance.collection("users")
@@ -171,7 +171,7 @@ class ProfileSetupScree extends StatelessWidget {
                       "phone": controller.phonController.text,
                       "nid": controller.nidController.text,
                       "balance": 0,
-                      "token": token
+                      "token": "token"
                     }).then((value) {
                       Get.offAll(() => BottomNav());
                     });

@@ -5,7 +5,7 @@ import 'package:e_wallet/Screen/Activity/activity_screen.dart';
 import 'package:e_wallet/Screen/Send_Money/receiver_screen.dart';
 import 'package:e_wallet/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

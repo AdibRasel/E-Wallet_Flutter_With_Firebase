@@ -55,7 +55,7 @@ class ReceiverScreen extends StatelessWidget {
                     }else{
                       // Get.snackbar("User exits", "Ther user is ${receiverData}");
 
-                      if(receiverData['email'] == user!.email){
+                      if(receiverData['email'] == user.email){
                         Get.snackbar("Error", "You can't sent to yourself");
                       }else{
 
