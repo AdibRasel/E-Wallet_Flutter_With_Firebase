@@ -66,6 +66,8 @@ dependencies:
   # firebase_messaging: ^15.2.9
   # flutter_local_notifications: ^17.1.2
 
+  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -76,6 +78,18 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
+
+  #App Icon and name
+  flutter_launcher_icons: ^0.14.4
+  
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "Assets/Images/E-Wallet.png"
+
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
