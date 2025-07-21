@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -176,19 +177,68 @@ class HomeScreen extends StatelessWidget {
 
                     SizedBox(height: 10),
 
-                    ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      primary: false,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return CustomListTile(
-                          title: "Md Rasal Hossain",
-                          subtitle: "2 Days Ago",
-                          trailing: "+600",
-                        );
-                      },
-                    ),
+
+                    // Activities List
+                    StreamBuilder(
+                      stream: FirebaseFirestore.instance.collection("history").snapshots(), 
+                      builder: (context, snapshot){
+                        
+                        
+                        if(snapshot.connectionState == ConnectionState.waiting){
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+
+                            // You must return something in every condition
+                        if (snapshot.hasError) {
+                          return Center(child: Text('Something went wrong'));
+                        }
+
+                        if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                          return Center(child: Text('No history found.'));
+                        }
+
+
+
+                        
+                        else{
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            primary: false,
+                            itemCount: snapshot.data!.docs.length,
+                            itemBuilder: (context, index){
+                            final data = snapshot.data!.docs[index];
+
+                              bool  isMe = data["sender_email"] == user.email;
+                              bool ifReceiver = data["reciver_email"] == user.email;
+
+                              DateTime trxTime = (data["time"] as Timestamp).toDate();
+
+                              final formatedTime = DateFormat.MMMMEEEEd().format(trxTime);
+
+                              final formatedTimeanother = DateFormat.jm().format(trxTime);
+
+
+
+                              return isMe || ifReceiver ?  CustomListTile(
+                                
+                                title: data["sender"], 
+                                subtitle: "${formatedTime.toString()} - ${formatedTimeanother.toString()}",
+                                trailing: isMe ? "-${data["amount"].toString()}"  : "+${data["amount"].toString()}" ,
+
+                              ) : const SizedBox(
+                                
+                              );
+                            },
+                          );
+                        }
+                      }
+                    )
+
+
                   ],
                 ),
               ),
